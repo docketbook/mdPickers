@@ -865,7 +865,7 @@ module.directive("mdpTimePicker", ["$mdpTimePicker", "$timeout", function($mdpTi
             
             // update input element if model has changed
             ngModel.$formatters.unshift(function(value) {
-                var time = angular.isDate(value) && moment(value);
+                var time = angular.isDate(value) || moment(value);
                 if(time && time.isValid()) 
                     updateInputElement(time.format(scope.timeFormat));
                 else
